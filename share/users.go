@@ -133,7 +133,7 @@ func (u *UserIndex) loadUserIndex() error {
 		}
 		for _, r := range remotes {
 			if r == "" || r == "*" {
-				user.Addrs = append(user.Addrs, UserAllowAll)
+				return errors.New("Wildcard remote not allowed")
 			} else {
 				re, err := regexp.Compile(r)
 				if err != nil {

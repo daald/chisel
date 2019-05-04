@@ -125,6 +125,8 @@ func (s *Server) handleWebsocket(w http.ResponseWriter, req *http.Request) {
 				return
 			}
 		}
+	} else {
+		failed(s.Errorf("no user provided"))
 	}
 	//set up reverse port forwarding
 	ctx, cancel := context.WithCancel(context.Background())
